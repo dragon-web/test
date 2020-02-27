@@ -1,0 +1,13 @@
+﻿  game.c
+c:\users\飞龙\desktop\编程学习\三子棋\三子棋\game.c(7): warning C4047: “函数”:“char (*)[3]”与“char”的间接级别不同
+c:\users\飞龙\desktop\编程学习\三子棋\三子棋\game.c(7): warning C4024: “InitBoard”: 形参和实参 1 的类型不同
+c:\users\飞龙\desktop\编程学习\三子棋\三子棋\game.c(8): warning C4047: “函数”:“char (*)[3]”与“char”的间接级别不同
+c:\users\飞龙\desktop\编程学习\三子棋\三子棋\game.c(8): warning C4024: “DisPlayBoard”: 形参和实参 1 的类型不同
+c:\users\飞龙\desktop\编程学习\三子棋\三子棋\game.c(12): warning C4047: “函数”:“char (*)[3]”与“char”的间接级别不同
+c:\users\飞龙\desktop\编程学习\三子棋\三子棋\game.c(12): warning C4024: “DisPlayBoard”: 形参和实参 1 的类型不同
+  ThreeChess.c
+  正在生成代码...
+ThreeChess.obj : error LNK2005: _DisPlayBoard 已经在 game.obj 中定义
+ThreeChess.obj : error LNK2005: _InitBoard 已经在 game.obj 中定义
+ThreeChess.obj : error LNK2005: _menu 已经在 game.obj 中定义
+C:\Users\飞龙\Desktop\编程学习\三子棋\Debug\三子棋.exe : fatal error LNK1169: 找到一个或多个多重定义的符号
