@@ -22,9 +22,9 @@ void menu()
 
 void LoginCycle(CycleList *plist)
 {
+	
 	if (!CycleListIsFull(plist))
 	{
-		printf("请输入自行车主姓名");
 		char name[20];
 		int age;
 		int sex;
@@ -34,6 +34,7 @@ void LoginCycle(CycleList *plist)
 		int year;
 		int month;
 		int day;
+		printf("请输入自行车主姓名\n");
 		scanf("%s",name);
 		_flushall();
 		printf("请输入性别(0代表男，1代表女)");
@@ -50,6 +51,10 @@ void LoginCycle(CycleList *plist)
 		plist->space += 1;
 		plist->last->next = _Buynode(name, sex, age, IDcard, Number,year,month,day,hour);
 		plist->last = _Buynode(name, sex, age, IDcard, Number, year, month, day, hour);
+		FILE *fp = fopen("Test.txt", "a");
+		fprintf(fp, "%s %d %d %s %d %d %d %d %d %d\n", name,age,sex,IDcard,hour,Number,year,month,day,hour);
+		fclose(fp);
+
 		printf("登记成功\n");
 		printf("\n");
 	}
@@ -131,6 +136,7 @@ void ChangeCycle(CycleList* myBycycleList)
 	char Number[18];
 	size_t sz1;
 	size_t sz2;
+	FILE *fp = fopen("Test.txt", "wt");
 	int SEX;
 	int AGE;
 	printf("请输入你要更改的信息的自行车位号\n");
@@ -144,39 +150,48 @@ void ChangeCycle(CycleList* myBycycleList)
 			SearchCycle(myBycycleList);
 			printf("请输入你要更改的信息\n");
 			printf("1:更改姓名\n");
-			printf("2:更改性别\n");			
+			printf("2:更改性别\n");		
 			printf("3:更改年龄\n");
 			printf("4:更改身份证号\n");
 			scanf("%d", &temp);
-			_flushall();
 			switch (temp)
 			{
 			case  1:
+				_flushall();
 				printf("请输入新的姓名\n");
 				scanf("%s", Name);
+				_flushall();
 				sz1 = strlen(Name)+1;
 				memcpy(p->CycleHoster, Name, sz1);
-				break;
+				printf("更改成功，返回主菜单");
+				printf("\n");
+				return;
 			case 2:
 				printf("请输入性别：（0代表男）\n");
 					scanf("%d", &SEX);
 					p->Sex = num;
-					break;
+					printf("更改成功，返回主菜单");
+					printf("\n");
+					return;
 			case 3:
 				printf("请输入年龄\n");
 				scanf("%d", &AGE);
 				p->Age = AGE;
-				break;
+				printf("更改成功，返回主菜单");
+				printf("\n");
+				return;
 			case 4:
 				printf("请输入身份证号\n");
 				scanf("%s", Number);
 				_flushall();
 				sz2 = strlen(Number)+1;
 				memcpy(p->IDcard, Number, sz2);
-				break;
+				printf("更改成功，返回主菜单");
+				printf("\n");
+				return;
 			default:
 				printf("输入有误,返回主菜单\n");
-				break;
+				return;
 			}
 		}
 		p = p->next;
@@ -186,6 +201,9 @@ void ChangeCycle(CycleList* myBycycleList)
 	printf("输入有误，返回主菜单");
 	printf("\n");
 	}
+	
+
+	fclose(fp);
 }
 
 void PickUpCycle(CycleList* myBycycleList)//取车
@@ -201,7 +219,7 @@ void PickUpCycle(CycleList* myBycycleList)//取车
 	scanf("%d,%d,%d,%d", &Year, &Month, &Day, &Hour);
 	printf("您存车的时间是 %d年 %d月 %d日 %d时", (*p).partingTime.year, (*p).partingTime.month, (*p).partingTime.day, (*p).partingTime.hour);
 	FEE = (((Year - (*p).partingTime.year) * 365 * 24 + (Month - (*p).partingTime.month) * 30 + (Day - (*p).partingTime.day) * 24 + (Hour - (*p).partingTime.hour)))*2;
-	printf("您需要缴纳的费用为%d", FEE);
+	printf("您需要缴纳的费用为%d\n\n", FEE);
 }
 CycleNode* SearchCycle1(CycleList* myBycycleList)
 {
@@ -222,11 +240,26 @@ CycleNode* SearchCycle1(CycleList* myBycycleList)
 
 void PrintResSpace(CycleList* myBycycleList)
 {
-	printf("=============查询剩余车位===================");
+	printf("=============查询剩余车位===================\n");
+	CycleNode* p = myBycycleList->first->next;
+	assert(p != NULL);
+	while (p != NULL)
+	{
+		printf("当前使用中的车位号是 %d\n", p->number);
+		p = p->next;
+	}
 
-
-
-
-
-
+	printf("剩余车位数为:\n %d",Space - myBycycleList->space);
+	printf("+++++++++++++++++++++++++++++++++++++++++++++++");
 }
+/*void FileWrite(CycleList* myBycycleList)
+{
+	FILE *fp = fopen("Test.txt", "w+");
+	CycleNode *p = myBycycleList->first;
+	while (p != NULL)
+	{
+		fprintf(fp, "%s %d %d %s %d %d %d %d %d\n",p->CycleHoster, p->Age,p->Sex,p->IDcard,p->number,p->partingTime.year,p->partingTime.month,p->partingTime.day, p->partingTime.hour);
+		p = p->next;
+	}
+	fclose(fp);
+}*/

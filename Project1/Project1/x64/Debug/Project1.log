@@ -1,2 +1,4 @@
 ﻿  system.c
+e:\我的c练习\test\project1\project1\system.c(252): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+  e:\我的c练习\test\project1\project1\system.c(252): note: 请考虑在格式字符串中使用“%zd”
   Project1.vcxproj -> E:\我的C练习\test\Project1\x64\Debug\Project1.exe
