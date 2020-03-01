@@ -1,7 +1,6 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS 
-#define Space 1000 //假设停车位有1000个
-
+#define Space 1000
 #include<stdio.h>
 #include<Windows.h>
 #include<stdlib.h>
