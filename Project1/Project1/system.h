@@ -35,6 +35,6 @@ void CycleListInit(CycleList *plist);
 CycleNode*_Buynode(char* p, int sex, int age, char* number, int Pnumber, int year, int month, int day, int hour);
 bool CycleListIsFull(CycleList *plist);
 CycleNode* SearchCycle1(CycleList* myBycycleList);
-//void FileWrite(CycleList* myBycycleList);
-
+void FileWrite(CycleList* myBycycleList);
+void DeleteCyNode(CycleList* myBycycleList,int key);
 	

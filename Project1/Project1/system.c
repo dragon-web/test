@@ -48,7 +48,7 @@ void LoginCycle(CycleList *plist)
 		scanf("%d,%d,%d,%d",&year,&month,&day,&hour);
 		printf("请输入要停的位号(位号为1到2000)");
 		scanf("%d", &Number);
-		plist->space += 1;
+		plist->space++;
 		plist->last->next = _Buynode(name, sex, age, IDcard, Number,year,month,day,hour);
 		plist->last = _Buynode(name, sex, age, IDcard, Number, year, month, day, hour);
 		FILE *fp = fopen("Test.txt", "a");
@@ -201,8 +201,6 @@ void ChangeCycle(CycleList* myBycycleList)
 	printf("输入有误，返回主菜单");
 	printf("\n");
 	}
-	
-
 	fclose(fp);
 }
 
@@ -214,12 +212,16 @@ void PickUpCycle(CycleList* myBycycleList)//取车
 	int Hour;
 	int FEE;
 	CycleNode*p = SearchCycle1(myBycycleList);
+	CycleNode* q = p->next;
 	assert(p != NULL);
 	printf("请输入取车（年，月，日，时）");
 	scanf("%d,%d,%d,%d", &Year, &Month, &Day, &Hour);
 	printf("您存车的时间是 %d年 %d月 %d日 %d时", (*p).partingTime.year, (*p).partingTime.month, (*p).partingTime.day, (*p).partingTime.hour);
 	FEE = (((Year - (*p).partingTime.year) * 365 * 24 + (Month - (*p).partingTime.month) * 30 + (Day - (*p).partingTime.day) * 24 + (Hour - (*p).partingTime.hour)))*2;
 	printf("您需要缴纳的费用为%d\n\n", FEE);
+	DeleteCyNode(myBycycleList, p->number);
+	printf("取车成功,返回主菜单\n");
+	printf("\n");
 }
 CycleNode* SearchCycle1(CycleList* myBycycleList)
 {
@@ -249,17 +251,35 @@ void PrintResSpace(CycleList* myBycycleList)
 		p = p->next;
 	}
 
-	printf("剩余车位数为:\n %d",Space - myBycycleList->space);
-	printf("+++++++++++++++++++++++++++++++++++++++++++++++");
+	printf("剩余车位数为: %zu \n",Space - myBycycleList->space);
+	printf("=============================================\n");
 }
-/*void FileWrite(CycleList* myBycycleList)
+void FileWrite(CycleList* myBycycleList)
 {
-	FILE *fp = fopen("Test.txt", "w+");
-	CycleNode *p = myBycycleList->first;
+	FILE *fp = fopen("Test.txt", "w");
+	CycleNode *p = myBycycleList->first->next;
+	assert(p != NULL);
 	while (p != NULL)
 	{
 		fprintf(fp, "%s %d %d %s %d %d %d %d %d\n",p->CycleHoster, p->Age,p->Sex,p->IDcard,p->number,p->partingTime.year,p->partingTime.month,p->partingTime.day, p->partingTime.hour);
 		p = p->next;
 	}
 	fclose(fp);
-}*/
+}
+void DeleteCyNode(CycleList* myBycycleList, int key)
+{
+	CycleNode *s;//q
+	CycleNode *t = myBycycleList->first;//p
+	while (t->next != NULL && t->next->number != key)
+		t = t->next;
+	if (t->next == NULL)
+		return;
+
+	s = t->next;
+	if (t->next == myBycycleList->last)
+		myBycycleList->last = t;
+	t->next = s->next;
+	free(t);
+	myBycycleList->space--;
+	return;
+}
