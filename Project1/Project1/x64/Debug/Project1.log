@@ -1,1 +1,3 @@
-﻿  Project1.vcxproj -> E:\我的C练习\test\Project1\x64\Debug\Project1.exe
+﻿  system.c
+e:\我的c练习\test\project1\project1\system.c(264): warning C4133: “函数”: 从“char [28]”到“FILE *const ”的类型不兼容
+  Project1.vcxproj -> E:\我的C练习\test\Project1\x64\Debug\Project1.exe

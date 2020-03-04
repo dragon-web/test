@@ -257,11 +257,11 @@ void PrintResSpace(CycleList* myBycycleList)
 void FileWrite(CycleList* myBycycleList)
 {
 	FILE *fp = fopen("Test.txt", "w");
-	CycleNode *p = myBycycleList->first->next;
+	CycleNode *p = myBycycleList->first;
 	assert(p != NULL);
 	while (p != NULL)
 	{
-		fprintf(fp, "%s %d %d %s %d %d %d %d %d\n",p->CycleHoster, p->Age,p->Sex,p->IDcard,p->number,p->partingTime.year,p->partingTime.month,p->partingTime.day, p->partingTime.hour);
+		fprintf("%s %d %d %s %d %d %d %d %d ",p->CycleHoster, p->Age,p->Sex,p->IDcard,p->number,p->partingTime.year,p->partingTime.month,p->partingTime.day, p->partingTime.hour);
 		p = p->next;
 	}
 	fclose(fp);

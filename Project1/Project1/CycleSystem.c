@@ -31,7 +31,9 @@ int main()
 		case 4:
 			system("cls");
 			PickUpCycle(&myCycleList);
+			_flushall();
 			FileWrite(&myCycleList);
+			_flushall();
 			break;
 		case 5:
 			system("cls");
