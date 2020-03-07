@@ -46,7 +46,7 @@ void LoginCycle(CycleList *plist)
 		_flushall();
 		printf("请输入停车时间(年，月，日，时)");
 		scanf("%d,%d,%d,%d",&year,&month,&day,&hour);
-		printf("请输入要停的位号(位号为1到2000)");
+		printf("请输入要停的位号(位号为1到1000)");
 		scanf("%d", &Number);
 		plist->space++;
 		plist->last->next = _Buynode(name, sex, age, IDcard, Number,year,month,day,hour);
@@ -222,6 +222,7 @@ void PickUpCycle(CycleList* myBycycleList)//取车
 	DeleteCyNode(myBycycleList, p->number);
 	printf("取车成功,返回主菜单\n");
 	printf("\n");
+	_flushall();
 }
 CycleNode* SearchCycle1(CycleList* myBycycleList)
 {
@@ -244,7 +245,11 @@ void PrintResSpace(CycleList* myBycycleList)
 {
 	printf("=============查询剩余车位===================\n");
 	CycleNode* p = myBycycleList->first->next;
-	assert(p != NULL);
+	if (p == NULL)
+	{
+		printf("当前还没有用户停车");
+		return;
+	}
 	while (p != NULL)
 	{
 		printf("当前使用中的车位号是 %d\n", p->number);
@@ -253,19 +258,20 @@ void PrintResSpace(CycleList* myBycycleList)
 
 	printf("剩余车位数为: %zu \n",Space - myBycycleList->space);
 	printf("=============================================\n");
+	_flushall();
 }
-void FileWrite(CycleList* myBycycleList)
+/*void FileWrite(CycleList* myBycycleList)
 {
 	FILE *fp = fopen("Test.txt", "w");
-	CycleNode *p = myBycycleList->first;
+	CycleNode *p = myBycycleList->first->next;
 	assert(p != NULL);
 	while (p != NULL)
 	{
-		fprintf("%s %d %d %s %d %d %d %d %d ",p->CycleHoster, p->Age,p->Sex,p->IDcard,p->number,p->partingTime.year,p->partingTime.month,p->partingTime.day, p->partingTime.hour);
+		fprintf(fp,"%s %d %d %s %d %d %d %d %d ",p->CycleHoster, p->Age,p->Sex,p->IDcard,p->number,p->partingTime.year,p->partingTime.month,p->partingTime.day, p->partingTime.hour);
 		p = p->next;
 	}
 	fclose(fp);
-}
+}*/
 void DeleteCyNode(CycleList* myBycycleList, int key)
 {
 	CycleNode *s;//q
