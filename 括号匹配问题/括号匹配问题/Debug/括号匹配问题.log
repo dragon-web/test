@@ -1,0 +1,5 @@
+﻿  match.c
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winnt.h(18696): error C2628: “DWORD”后面接“char”是非法的(是否忘记了“;”?)
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winnt.h(18696): error C2208: “unsigned long”: 没有使用此类型进行定义的成员
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winioctl.h(2167): error C2628: “DWORD”后面接“char”是非法的(是否忘记了“;”?)
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winioctl.h(2167): error C2208: “unsigned long”: 没有使用此类型进行定义的成员
