@@ -1,0 +1,12 @@
+﻿  main.c
+c:\users\dyl13\desktop\王佳瑶的课设报告\王佳瑶的课设报告\王佳瑶的课设报告\main.c(60): warning C4474: scanf_s: 格式字符串中传递的参数太多
+  c:\users\dyl13\desktop\王佳瑶的课设报告\王佳瑶的课设报告\王佳瑶的课设报告\main.c(60): note: 占位符和其参数预计 1 可变参数，但提供的却是 2 参数
+c:\users\dyl13\desktop\王佳瑶的课设报告\王佳瑶的课设报告\王佳瑶的课设报告\main.c(113): warning C4474: scanf_s: 格式字符串中传递的参数太多
+  c:\users\dyl13\desktop\王佳瑶的课设报告\王佳瑶的课设报告\王佳瑶的课设报告\main.c(113): note: 占位符和其参数预计 1 可变参数，但提供的却是 2 参数
+c:\users\dyl13\desktop\王佳瑶的课设报告\王佳瑶的课设报告\王佳瑶的课设报告\main.c(269): warning C4474: scanf_s: 格式字符串中传递的参数太多
+  c:\users\dyl13\desktop\王佳瑶的课设报告\王佳瑶的课设报告\王佳瑶的课设报告\main.c(269): note: 占位符和其参数预计 1 可变参数，但提供的却是 2 参数
+c:\users\dyl13\desktop\王佳瑶的课设报告\王佳瑶的课设报告\王佳瑶的课设报告\main.c(399): warning C4474: scanf_s: 格式字符串中传递的参数太多
+  c:\users\dyl13\desktop\王佳瑶的课设报告\王佳瑶的课设报告\王佳瑶的课设报告\main.c(399): note: 占位符和其参数预计 1 可变参数，但提供的却是 2 参数
+c:\users\dyl13\desktop\王佳瑶的课设报告\王佳瑶的课设报告\王佳瑶的课设报告\main.c(485): warning C4474: scanf_s: 格式字符串中传递的参数太多
+  c:\users\dyl13\desktop\王佳瑶的课设报告\王佳瑶的课设报告\王佳瑶的课设报告\main.c(485): note: 占位符和其参数预计 1 可变参数，但提供的却是 2 参数
+  王佳瑶的课设报告.vcxproj -> C:\Users\DYL13\Desktop\王佳瑶的课设报告\王佳瑶的课设报告\Debug\王佳瑶的课设报告.exe
